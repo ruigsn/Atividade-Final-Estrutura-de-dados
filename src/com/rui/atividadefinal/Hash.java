@@ -21,13 +21,13 @@ public class Hash {
         return vetor[codigo % operador].buscar(codigo);
     }
 
-    public String toString() {                          // Sobrescreve o metodo toString
-        String out = "";                                // Cria uma string de saida
-        for(int i = 0; i < operador; i++) {             // Para cada posicao no vetor de Listas
-            out += "" + i + ": ";                       // adiciona uma string representando a Lista
+    public String toString() {
+        String out = "";
+        for(int i = 0; i < operador; i++) {
+            out += "" + i + ": ";
             out += vetor[i % operador] + "\n";
         }
-        return out;                                     // Retorna a String
+        return out;
     }
 
 }
