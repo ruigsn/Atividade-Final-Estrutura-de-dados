@@ -25,6 +25,10 @@ public class Hash {
         return vetor[nome.hashCode() % operador].buscar(nome.hashCode());
     }
 
+    public void removerContato(String nome){
+        vetor[nome.hashCode() % operador].remover(nome);
+    }
+
     public String toString() {
         String out = "";
         for(int i = 0; i < operador; i++) {

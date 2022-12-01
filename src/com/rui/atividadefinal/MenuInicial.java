@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuInicial{
 
-    Hash hash = new Hash(37);
+    Hash hash = new Hash(11);
 
     public void menuInicial(){
 
@@ -15,44 +15,55 @@ public class MenuInicial{
         System.out.println("2 - Pesquisar contato (pelo nome)");
         System.out.println("3 - Excluir contato");
         System.out.println("4 - Exibir lista de contatos");
+        System.out.println("5 - Fechar agenda");
         System.out.println("-----------------------------------");
 
         Scanner input = new Scanner(System.in);
         int opcaoInicial = input.nextInt();
 
-        if (opcaoInicial == 1){
-            System.out.println("Digite o nome");
-            String nome = input.next();
-            System.out.println("Digite o telefone");
-            String telefone = input.next();
-            System.out.println("Digite o e-mail");
-            String email = input.next();
-            System.out.println("Digite a data de nascimento");
-            String dataNascimento = input.next();
-            int codigo = nome.hashCode();
+        switch (opcaoInicial){
+            case 1:
+                System.out.println("Digite o nome");
+                String nome = input.next();
+                System.out.println("Digite o telefone");
+                String telefone = input.next();
+                System.out.println("Digite o e-mail");
+                String email = input.next();
+                System.out.println("Digite a data de nascimento");
+                String dataNascimento = input.next();
+                System.out.println("Digite o celular");
+                String celular = input.next();
+                int codigo = nome.hashCode();
 
-            hash.inserir(new Contato(codigo, nome, telefone, email, dataNascimento));
+                hash.inserir(new Contato(codigo, nome, telefone, email, dataNascimento, celular));
 
-            menuInicial();
+                menuInicial();
 
-        } else if (opcaoInicial == 2) {
-            System.out.println("Digite o nome a ser buscado");
-            String nome = input.next();
-            System.out.println(hash.buscar(nome));
+            case 2:
+                System.out.println("Digite o nome a ser buscado");
+                String nomeBusca = input.next();
+                System.out.println(hash.buscar(nomeBusca));
 
-            menuInicial();
+                menuInicial();
+            case 3:
+                System.out.println("Digite o nome a ser excluído");
+                String nomeExclusao = input.next();
+                hash.removerContato(nomeExclusao);
+                menuInicial();
 
-        } else if (opcaoInicial == 3){
-            System.out.println("Opção inválida");
-            menuInicial();
+            case 4:
+                System.out.println(hash);
+                menuInicial();
 
-        } else if (opcaoInicial == 4){
-            System.out.println(hash);
-            menuInicial();
-        } else {
-            System.out.println("Opção inválida");
-            menuInicial();
+            case 5:
+                System.out.println("Obrigado e até breve!!");
+                break;
+
+            default:
+                System.out.println("Opção inválida");
+                menuInicial();
         }
+
         input.close();
     }
 }
