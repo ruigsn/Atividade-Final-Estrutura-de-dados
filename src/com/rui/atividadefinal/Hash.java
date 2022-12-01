@@ -21,11 +21,17 @@ public class Hash {
         return vetor[codigo % operador].buscar(codigo);
     }
 
+    public Contato buscar(String nome) {
+        return vetor[nome.hashCode() % operador].buscar(nome.hashCode());
+    }
+
     public String toString() {
         String out = "";
         for(int i = 0; i < operador; i++) {
-            out += "" + i + ": ";
-            out += vetor[i % operador] + "\n";
+            if (vetor[i] != null){
+                out += "" + i + ": ";
+                out += vetor[i % operador] + "\n";
+            }
         }
         return out;
     }
